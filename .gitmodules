@@ -1,0 +1,4 @@
+[submodule "opensbi"]
+	path = opensbi
+	url = https://github.com/GeassCore/opensbi.git
+	branch = duosdk
