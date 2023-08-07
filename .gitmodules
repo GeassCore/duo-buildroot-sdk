@@ -2,3 +2,15 @@
 	path = opensbi
 	url = https://github.com/GeassCore/opensbi.git
 	branch = duosdk
+[submodule "linux"]
+	path = linux
+	url = https://github.com/GeassCore/linux.git
+	branch = duosdk
+[submodule "buildroot"]
+	path = buildroot
+	url = https://github.com/GeassCore/buildroot.git
+	branch = duosdk
+[submodule "u-boot"]
+	path = u-boot
+	url = https://github.com/GeassCore/u-boot.git
+	branch = duosdk
