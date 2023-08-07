@@ -18,7 +18,7 @@
 ```
 ├── build               // 编译目录，存放编译脚本以及各board差异化配置
 ├── build_milkv.sh      // Milk-V Duo 一键编译脚本
-├── buildroot-2021.05   // buildroot开源工具
+├── buildroot           // buildroot开源工具
 ├── freertos            // freertos系统
 ├── fsbl                // fsbl启动固件，prebuilt形式存在
 ├── install             // 执行一次完整编译后，临时存放各image路径
