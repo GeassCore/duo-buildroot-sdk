@@ -2,6 +2,6 @@ config TARGET_PACKAGE_ENVTOOLS
 	bool "Target package envtools"
 	default n
 	help
-	envtools version: u-boot-2021.10
-	source code:u-boot-2021.10/tools/env
+	envtools version: u-boot
+	source code:u-boot/tools/env
 	build by "make envtools"

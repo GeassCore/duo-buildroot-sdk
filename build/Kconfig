@@ -401,7 +401,7 @@ endchoice
 config UBOOT_SRC
 	string
 	default "u-boot" if UBOOT_2017_07
-	default "u-boot-2021.10" if UBOOT_2021_10
+	default "u-boot" if UBOOT_2021_10
 endmenu
 
 menu "Kernel options"

@@ -172,7 +172,7 @@ u-boot-menuconfig: ${UBOOT_OUTPUT_CONFIG_PATH}
 
 u-boot-dts:
 	$(call print_target)
-ifeq ($(UBOOT_SRC), u-boot-2021.10)
+ifeq ($(UBOOT_SRC), u-boot)
 # U-boot doesn't has arch/arm64
 ifeq ($(ARCH), arm64)
 	${Q}find ${BUILD_PATH}/boards/${CHIP_ARCH_L} \
