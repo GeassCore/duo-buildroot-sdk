@@ -22,9 +22,9 @@
 #include <linux/slab.h>
 #include <linux/memblock.h>
 
-#define MAX_RESERVED_REGIONS	4
+#define MAX_RESERVED_REGIONS	64
 
-#if defined(CONFIG_ARCH_CVITEK)
+#if defined(CONFIG_ARCH_CVITEK) && !defined(CONFIG_CVITEK_REMOTEPROC)
 struct reserved_mem_size_entry {
 	char *uname;
 	phys_addr_t size;
@@ -69,7 +69,8 @@ void __init fdt_reserved_mem_save_node(unsigned long node, const char *uname,
 	}
 
 	rmem->fdt_node = node;
-	strncpy(rmem->name, uname, 8);
+	rmem->name = uname;
+	// strncpy(rmem->name, uname, 8);
 	rmem->base = base;
 	rmem->size = size;
 
@@ -91,7 +92,7 @@ static int __init __reserved_mem_alloc_size(unsigned long node,
 	const __be32 *prop;
 	bool nomap;
 	int ret;
-#if defined(CONFIG_ARCH_CVITEK)
+#if defined(CONFIG_ARCH_CVITEK) && !defined(CONFIG_CVITEK_REMOTEPROC)
 	int i;
 #endif
 
@@ -104,7 +105,7 @@ static int __init __reserved_mem_alloc_size(unsigned long node,
 		return -EINVAL;
 	}
 	size = dt_mem_next_cell(dt_root_size_cells, &prop);
-#if defined(CONFIG_ARCH_CVITEK)
+#if defined(CONFIG_ARCH_CVITEK) && !defined(CONFIG_CVITEK_REMOTEPROC)
 	for (i = 0; i < reserved_mem_size_entry_count; i++) {
 		if (!strcmp(uname, reserved_mem_size_array[i].uname)) {
 			pr_info("fix reserved-memory item %s from bootargs\n", reserved_mem_size_array[i].uname);
@@ -186,7 +187,7 @@ static int __init __reserved_mem_alloc_size(unsigned long node,
 	return 0;
 }
 
-#if defined(CONFIG_ARCH_CVITEK)
+#if defined(CONFIG_ARCH_CVITEK) && !defined(CONFIG_CVITEK_REMOTEPROC)
 static char *next_arg_separator(char *args, char **param, char **val, char separator)
 {
 	unsigned int i, equals = 0;
