@@ -32,6 +32,8 @@ jobs:
         echo $PWD
         echo $GITHUB_WORKSPACE
         bash ./build.sh milkv-duo
+        bash ./build.sh milkv-duo256m
+        bash ./build.sh milkv-duos-sd
 
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
@@ -48,7 +50,9 @@ jobs:
     - name: Generate Hash
       working-directory: ${{ github.workspace }}/out
       run: |
-        echo "$(sha256sum *.img)" >> milk-v.hash
+        echo "$(sha256sum milkv-duo-*.img)" >> milk-v.hash
+        echo "$(sha256sum milkv-duo256m-*.img)" >> milk-v.hash
+        echo "$(sha256sum milkv-duos-*.img)" >> milk-v.hash
 
     - name: Upload Image
       uses: actions/upload-artifact@main
